@@ -20,13 +20,13 @@ const ShopContextProvider = (props) =>{
     
 
       useEffect(()=>{
-        fetch('https://mernfullstack-backend.onrender.com/allproducts')
+        fetch('https://mernfullstack-back.onrender.com/allproducts')
         .then((response)=>response.json())
         .then((data)=>setAll_product(data))
        
        
         if(localStorage.getItem('auth-token')){
-          fetch('https://mernfullstack-backend.onrender.com/addtocart',{
+          fetch('https://mernfullstack-back.onrender.com/addtocart',{
             method:'POST',
             headers:{
               Accept:'application/form-data',
@@ -43,7 +43,7 @@ const ShopContextProvider = (props) =>{
        const addToCart = (itemId) =>{
           setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}));
           if(localStorage.getItem('auth-token')){
-            fetch('https://mernfullstack-backend.onrender.com/addtocart',{
+            fetch('https://mernfullstack-back.onrender.com/addtocart',{
             method:'POST',
             headers:{
               Accept:'application/form-data',
@@ -60,7 +60,7 @@ const ShopContextProvider = (props) =>{
         const removeFromCart = (itemId) =>{
                  setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}));
                  if(localStorage.getItem('auth-token')){
-                  fetch('https://mernfullstack-backend.onrender.com/removefromcart',{
+                  fetch('https://mernfullstack-back.onrender.com/removefromcart',{
                     method:'POST',
                     headers:{
                       Accept:'application/form-data',
